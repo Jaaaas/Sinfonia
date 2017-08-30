@@ -1,5 +1,7 @@
 package ascompany.sinfonia.Core;
 
+import FunctionalInterface.ThrowingBiconsumer;
+import FunctionalInterface.ThrowingConsumer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -145,8 +148,8 @@ public class QueryCore<T,K,V>
         return this;
     }
     
-    /*Il metodo execution viene utilizzato per eseguire la query di select*/
     /**
+     * Il metodo execution viene utilizzato per eseguire la query di select
      * 
      * @return
      * @throws SQLException 
@@ -154,6 +157,34 @@ public class QueryCore<T,K,V>
     public QueryCore executionQ() throws SQLException
     {
         rs = prepStm.executeQuery();
+        return this;
+    }
+    
+    /**
+     * Il metodo execution viene utilizzato per eseguire la query di select potendo passare un validatore 
+     * 
+     * @param throwingConsumer
+     * @return
+     * @throws SQLException 
+     */
+    public QueryCore executionQ(ThrowingConsumer throwingConsumer) throws SQLException
+    {
+        rs = prepStm.executeQuery();
+        throwingConsumer.accept(rs);
+        return this;
+    }
+    
+    /**
+     * Il metodo execution viene utilizzato per eseguire la query di select potendo passare un validatore e un messaggio d'errore
+     * 
+     * @param throwingConsumer
+     * @return
+     * @throws SQLException 
+     */
+    public QueryCore executionQ(ThrowingBiconsumer throwingConsumer, String e) throws SQLException
+    {
+        rs = prepStm.executeQuery();
+        throwingConsumer.accept(rs,e);
         return this;
     }
     
@@ -222,6 +253,31 @@ public class QueryCore<T,K,V>
         }
         
         return this;
+    }
+    
+    /**
+     * Funzione utilizzata per semplificare la chain
+     * 
+     * @param query query da dover eseguire
+     * @param l lista dei parametri con cui vengono sostituiti "?"
+     * @param c connessione
+     * @return classe d'istanza
+     * @throws SQLException 
+     */
+    public QueryCore setup(String query, List<Object> l,Connection c) throws SQLException
+    {
+        loadQuery(query,l).init(c);
+        return this;
+    }
+    
+    /**
+     * Funzione utilizzata per semplificare la chain
+     * 
+     * @return classe d'istanza
+     */
+    public K release()
+    {
+        return (K) destroy().getResponse();
     }
     
     /**
