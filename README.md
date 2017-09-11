@@ -213,10 +213,8 @@ public QueryCore mapping()
 public QueryCore destroy()
 ```
 
+### Future developments
 
-
-
-
-
-
-
+* **Maven integration**
+* **New Validators**
+* **Improves performance**
