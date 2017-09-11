@@ -16,3 +16,11 @@ Sinfonia uses two main entities:
 * **QueryCore**: is used to run and map the query using the chain construct.
 
 ## Getting Started
+
+### Prerequisites
+In order to use Sinfonia you simply need to import the **JAR** into the project and you can use its features.
+
+### Features
+We will divide the functionality for the two main entities described above
+
+#### ConnectionCore
