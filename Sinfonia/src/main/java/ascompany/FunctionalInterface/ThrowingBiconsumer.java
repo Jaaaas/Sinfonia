@@ -3,29 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FunctionalInterface;
+package ascompany.FunctionalInterface;
 
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+
 
 /**
  *
  * @author m.castano
  */
 @FunctionalInterface
-public interface ThrowingConsumer <T> extends Consumer<T>
+public interface ThrowingBiconsumer <T,U> extends BiConsumer<T,U>
 {
     @Override
-    default void accept(final T elem) 
+    default void accept(final T elem1, final U elem2) 
     {
         try 
         {
-            acceptThrows(elem);
+            acceptThrows(elem1, elem2);
         } 
         catch (final Exception e) 
         {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
-    void acceptThrows(T elem) throws Exception;
+    void acceptThrows(T elem, U elem2) throws Exception;
+        
 }
