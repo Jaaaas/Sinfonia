@@ -44,4 +44,26 @@ A possible json file might be:
 
 ConnectionCore will read these parameters and establish the connection with the specified database. All json file parameters are mandatory except for the database name. *Remember that the project must have the specified driver installed.*
 
+When you will retrieve the connection, you can set the auto commit by passing a boolean.
+
+```java
+public Connection fetchConnection(boolean commitMode)
+{
+    c.setAutoCommit(commitMode);
+    return getConnection();
+}
+```
+
+Other functions are:
+```
+public Connection getConnection(){}
+
+public void closeConnection(){}
+
+public void doCommit(){}
+
+public void doRollback(){}
+```
+
+
 
