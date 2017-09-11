@@ -64,6 +64,27 @@ public void doCommit(){}
 
 public void doRollback(){}
 ```
+#### QueryCore
+After we connect to the database through ConnectionCore, QueryCore gives us the ability to run our queries. 
+To create a QueryCore object we need the query. A second parameter that is required is a list that will contain the values that will replace the **"?"** for the use of the prepared statement. 
+If the prepared statement is not used in the query, you can pass null
+
+```java
+public QueryCore(String query,List<Object> l);
+```
+
+An example might be:
+```java
+QueryCore qc = new QueryCore("Select * From tableName",null);
+```
+
+or
+```java
+QueryCore qc = new QueryCore("SELECT * FROM persona WHERE field = ? ",Arrays.asList(args));
+```
+
+To avoid finding sql queries inside the constructor, we recommend using some functions that return the query directly.
+For this purpose, we recommend using [Cosmo](https://github.com/Jaaaas/Cosmo)  (the documentation will be added soon)
 
 
 
