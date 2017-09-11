@@ -21,6 +21,27 @@ Sinfonia uses two main entities:
 In order to use Sinfonia you simply need to import the **JAR** into the project and you can use its features.
 
 ### Features
-We will divide the functionality for the two main entities described above
+We will divide the functionality for the two main entities described above.
 
 #### ConnectionCore
+ConnectionCore allows you to establish the first connection to the database. It is possible to establish a connection to the database through a json file where we will find the configuration parameters.
+
+```java
+ConnectionCore cc = new ConnectionCore().openConnectionToDB("AbsolutePath/To/ConfigDatabase.json");
+```
+A possible json file might be:
+```json
+{
+    "Driver": "com.mysql.cj.jdbc.Driver",
+    "Ip": "jdbc:mysql://127.0.0.1",
+    "Port": "3306",
+    "Username": "username",
+    "Password": "password",
+    "Database": "Sinfonia",
+    "Timezone": "Europe/Rome"
+}
+```
+
+ConnectionCore will read these parameters and establish the connection with the specified database. All json file parameters are mandatory except for the database name. *Remember that the project must have the specified driver installed.*
+
+
