@@ -84,7 +84,99 @@ QueryCore qc = new QueryCore("SELECT * FROM persona WHERE field = ? ",Arrays.asL
 ```
 *Remember that the order of the prepared statement list is critical for the correct execution of the query*.
 
-To avoid finding sql queries inside the constructor(or inside java files in general), we recommend using some functions that return the query directly. For this purpose, we recommend using [Cosmo](https://github.com/Jaaaas/Cosmo)  (the documentation will be added soon)
+To avoid finding sql queries inside the constructor(or inside java files in general), we recommend using some functions that return the query directly. For this purpose, we recommend using [Cosmo](https://github.com/Jaaaas/Cosmo)(the documentation will be added soon).
+
+After you instantiate the QueryCore object, you can use the chain constructor. We will take various examples explaining the different use cases
+
+##### Use cases
+
+* **Select mapped to json**: if we have to make a simple select query and we need to map it to a json object
+```java
+JsonArray jsonArray = (JsonArray) queryCore.init(connectionCore.fetchConnection(false))
+                                    .buildQuery()
+                                    .executionQ()
+                                    .mapping(new DatabaseUtility().rsToJson)
+                                    .destroy()
+                                    .getResponse();
+```
+
+The code above, will build the query, will run it, will map it to a json object, will release the resources and will take the result.
+
+* **Select mapped to custom class**: if we have to make a simple select query and we need to map it to a custom class
+```java
+ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionCore.fetchConnection(false))
+                                                .buildQuery()
+                                                .executionQ()
+                                                .to(Post.class)
+                                                .mapping(new DatabaseUtility().rsToModel)
+                                                .destroy()
+                                                .getResponse();
+```
+*Remember that the customObject fields must have the same name as the columns selected in the query*.
+
+* **Update query**: if we have to make a simple update query
+```java
+qc.init(cCore.getConnection())
+            .buildQuery()
+            .executionU()
+            .destroy();
+```
+
+* **Update query retrieving key**: if we need to get what **primary key** was updated
+```java
+int keyUpdated = qc.init(cCore.getConnection())
+            .buildQuery()
+            .executionU()
+            .destroy()
+            .getKey();
+```
+
+* **Select query with validation and custom error**: if we need to validate the resultSet, we can use **Validators**. At the moment there are only two Validators(others will be added soon). 
+
+1. notEmpty
+2. notEmptyWithError
+
+Validators can be used as follows
+
+```java
+ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionCore.fetchConnection(false))
+                                                .buildQuery()
+                                                .executionQ(new Validator().notEmptyWithError, "Empty result set"))
+                                                .to(Post.class)
+                                                .mapping(new DatabaseUtility().rsToModel)
+                                                .destroy()
+                                                .getResponse();
+```
+if the ResultSet will be empty, an exception will be thrown with the specified message.
+
+```java
+ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionCore.fetchConnection(false))
+                                                .buildQuery()
+                                                .executionQ(new Validator().notEmpty)
+                                                .to(Post.class)
+                                                .mapping(new DatabaseUtility().rsToModel)
+                                                .destroy()
+                                                .getResponse();
+```
+in this case, an exception will be thrown without any error.
+
+##### Chain functions
+
+**init**
+```java
+public QueryCore init(Connection c)
+```
+Init functions will instantiate Prepared Statement object inside QueryCore.
+
+**buildQuery**
+```java
+public QueryCore buildQuery()
+```
+BuildQuery will replace all Prepared Statement with the values of the list we passed as second parameter.
+
+
+
+
 
 
 
