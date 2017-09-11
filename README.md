@@ -11,6 +11,8 @@ Sinfonia has been designed with a simpler design. It does not offer complex conf
 
 Sinfonia uses two main entities:
 
-* ConnectionCore: manages the database connection and all the operations associated with it(commit,rollback and so on).
+* **ConnectionCore**: manages the database connection and all the operations associated with it(commit,rollback and so on).
 
-* QueryCore: is used to run and map the query using the chain construct.
+* **QueryCore**: is used to run and map the query using the chain construct.
+
+## Getting Started
