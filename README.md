@@ -160,19 +160,59 @@ ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionC
 ```
 in this case, an exception will be thrown without any error.
 
+### Shortcuts
+
+We can use some **"shortcuts"** to decrease the length of the chain. 
+
+```java
+JsonArray jsonArray = (JsonArray) queryCore
+                        .setup("Select * from tableName", Arrays.asList(args), connectionCore.fetchConnection(false))
+                        .buildQuery()
+                        .mapping( new DatabaseUtility().rsToJson)
+                        .release();
+```
+
+
 ### Chain functions
 
 **init**
 ```java
 public QueryCore init(Connection c)
 ```
-Init functions will instantiate Prepared Statement object inside QueryCore.
+**Init** function will instantiate Prepared Statement object inside QueryCore.
 
 **buildQuery**
 ```java
 public QueryCore buildQuery()
 ```
-BuildQuery will replace all Prepared Statement with the values of the list we passed as second parameter.
+**BuildQuery** will replace all Prepared Statement with the values of the list we passed as second parameter.
+
+**to**
+```java
+public QueryCore to(Class c)
+```
+**To** function is used to determine which class the ResultSet should be cast.
+
+**executionQ**
+```java
+public QueryCore executionQ()
+```
+**ExcetuionQ** is used to execute the query. This function accept also a Validator as parameter.
+
+```java
+public QueryCore executionU()
+```
+**ExecutionU** is used to execute an update query.
+
+```java
+public QueryCore mapping()
+```
+**Mapping** function is used to map the ResultSet to a JsonElement or to a CustomClass. It accept as parameter a Function or a BiFunction.
+
+```java
+public QueryCore destroy()
+```
+**Destroy** function is used to close all resources opened such as ResultSet and PreparedStatement.
 
 
 
