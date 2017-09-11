@@ -29,7 +29,7 @@ public class QueryCore<T,K,V>
     /**
      * Lista dei parametri che vengono utilizzati per rimpizziare i "?" (Ricordare di passarli in ordine) 
      */
-    private List<Object> l;
+    private List<Object> l = null;
     
     /**
      * Prepared statement utilizzato per effettuare la query 
