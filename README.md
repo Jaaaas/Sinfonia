@@ -116,7 +116,7 @@ ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionC
 
 * **Update query**: if we have to make a simple update query
 ```java
-qc.init(cCore.getConnection())
+qc.init(connectionCore.getConnection())
             .buildQuery()
             .executionU()
             .destroy();
@@ -124,7 +124,7 @@ qc.init(cCore.getConnection())
 
 * **Update query retrieving key**: if we need to get what **key** was updated
 ```java
-int keyUpdated = qc.init(cCore.getConnection())
+int keyUpdated = qc.init(connectionCore.getConnection())
             .buildQuery()
             .executionU()
             .destroy()
