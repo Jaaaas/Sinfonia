@@ -1,6 +1,6 @@
 # Sinfonia
 
-> **Java library that helps the query execution process using a chain construct and Java 8. Perform easily queries and updates to any databases.**
+> **Java library that helps the query execution process using Java 8. Perform easily queries and updates to any databases.**
 
 ## Overview
 
@@ -13,7 +13,7 @@ Sinfonia uses two main entities:
 
 * **ConnectionCore**: manages the database connection and all the operations associated with it(commit,rollback and so on).
 
-* **QueryCore**: is used to run and map the query using the chain construct.
+* **QueryCore**: is used to run and map the query.
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ In order to use Sinfonia you simply need to import the **JAR** into the project 
 We will divide the functionality for the two main entities described above.
 
 #### ConnectionCore
-ConnectionCore allows you to establish the first connection to the database. It is possible to establish a connection to the database through a json file where we will find the configuration parameters.
+ConnectionCore allows you to establish the first connection to the database. It is to do it through a json file where we will find the configuration parameters.
 
 ```java
 ConnectionCore cc = new ConnectionCore().openConnectionToDB("AbsolutePath/To/ConfigDatabase.json");
@@ -54,7 +54,7 @@ public Connection fetchConnection(boolean commitMode)
 }
 ```
 
-Other functions are:
+Other useful functions are:
 ```
 public Connection getConnection(){}
 
@@ -66,8 +66,8 @@ public void doRollback(){}
 ```
 #### QueryCore
 After we connect to the database through ConnectionCore, QueryCore gives us the ability to run our queries. 
-To create a QueryCore object we need the query. A second parameter that is required is a list that will contain the values that will replace the **"?"** for the use of the prepared statement. 
-If the prepared statement is not used in the query, you can pass null
+To create a QueryCore object we need the query as the first parameter and as the second parameter a list that will contain the values that will replace the **"?"** for the use of the prepared statement. 
+If the prepared statement is not used in the query, you can just omit it.
 
 ```java
 public QueryCore(String query,List<Object> l);
@@ -75,14 +75,14 @@ public QueryCore(String query,List<Object> l);
 
 An example might be:
 ```java
-QueryCore qc = new QueryCore("Select * From tableName",null);
+QueryCore qc = new QueryCore("Select * From tableName");
 ```
 
 or
 ```java
 QueryCore qc = new QueryCore("SELECT * FROM persona WHERE field = ? ",Arrays.asList(args));
 ```
-*Remember that the order of the prepared statement list is critical for the correct execution of the query*
+*Remember that the order of the prepared statement list is critical for the correct execution of the query*.
 
 To avoid finding sql queries inside the constructor(or inside java files in general), we recommend using some functions that return the query directly. For this purpose, we recommend using [Cosmo](https://github.com/Jaaaas/Cosmo)  (the documentation will be added soon)
 
