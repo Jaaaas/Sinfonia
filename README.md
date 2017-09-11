@@ -23,7 +23,7 @@ In order to use Sinfonia you simply need to import the **JAR** into the project 
 ### Features
 We will divide the functionality for the two main entities described above.
 
-#### ConnectionCore
+### ConnectionCore
 ConnectionCore allows you to establish the first connection to the database. It is to do it through a json file where we will find the configuration parameters.
 
 ```java
@@ -64,7 +64,7 @@ public void doCommit(){}
 
 public void doRollback(){}
 ```
-#### QueryCore
+### QueryCore
 After we connect to the database through ConnectionCore, QueryCore gives us the ability to run our queries. 
 To create a QueryCore object we need the query as the first parameter and as the second parameter a list that will contain the values that will replace the **"?"** for the use of the prepared statement. 
 If the prepared statement is not used in the query, you can just omit it.
@@ -88,7 +88,7 @@ To avoid finding sql queries inside the constructor(or inside java files in gene
 
 After you instantiate the QueryCore object, you can use the chain constructor. We will take various examples explaining the different use cases
 
-##### Use cases
+### Use cases
 
 * **Select mapped to json**: if we have to make a simple select query and we need to map it to a json object
 ```java
@@ -107,7 +107,7 @@ The code above, will build the query, will run it, will map it to a json object,
 ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionCore.fetchConnection(false))
                                                 .buildQuery()
                                                 .executionQ()
-                                                .to(Post.class)
+                                                .to(CustomObject.class)
                                                 .mapping(new DatabaseUtility().rsToModel)
                                                 .destroy()
                                                 .getResponse();
@@ -122,7 +122,7 @@ qc.init(cCore.getConnection())
             .destroy();
 ```
 
-* **Update query retrieving key**: if we need to get what **primary key** was updated
+* **Update query retrieving key**: if we need to get what **key** was updated
 ```java
 int keyUpdated = qc.init(cCore.getConnection())
             .buildQuery()
@@ -160,7 +160,7 @@ ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionC
 ```
 in this case, an exception will be thrown without any error.
 
-##### Chain functions
+### Chain functions
 
 **init**
 ```java
