@@ -84,8 +84,7 @@ QueryCore qc = new QueryCore("SELECT * FROM persona WHERE field = ? ",Arrays.asL
 ```
 *Remember that the order of the prepared statement list is critical for the correct execution of the query*
 
-To avoid finding sql queries inside the constructor, we recommend using some functions that return the query directly.
-For this purpose, we recommend using [Cosmo](https://github.com/Jaaaas/Cosmo)  (the documentation will be added soon)
+To avoid finding sql queries inside the constructor(or inside java files in general), we recommend using some functions that return the query directly. For this purpose, we recommend using [Cosmo](https://github.com/Jaaaas/Cosmo)  (the documentation will be added soon)
 
 
 
