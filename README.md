@@ -175,44 +175,44 @@ JsonArray jsonArray = (JsonArray) queryCore
 
 ### Chain functions
 
-**init**
+**Init** function will instantiate Prepared Statement object inside QueryCore.
 ```java
 public QueryCore init(Connection c)
 ```
-**Init** function will instantiate Prepared Statement object inside QueryCore.
 
-**buildQuery**
+
+**BuildQuery** will replace all Prepared Statement with the values of the list we passed as second parameter.
 ```java
 public QueryCore buildQuery()
 ```
-**BuildQuery** will replace all Prepared Statement with the values of the list we passed as second parameter.
 
-**to**
+
+**To** function is used to determine which class the ResultSet should be cast.
 ```java
 public QueryCore to(Class c)
 ```
-**To** function is used to determine which class the ResultSet should be cast.
 
-**executionQ**
+
+**ExcetuionQ** is used to execute the query. This function accept also a Validator as parameter.
 ```java
 public QueryCore executionQ()
 ```
-**ExcetuionQ** is used to execute the query. This function accept also a Validator as parameter.
 
+**ExecutionU** is used to execute an update query.
 ```java
 public QueryCore executionU()
 ```
-**ExecutionU** is used to execute an update query.
 
+**Mapping** function is used to map the ResultSet to a JsonElement or to a CustomClass. It accept as parameter a Function or a BiFunction.
 ```java
 public QueryCore mapping()
 ```
-**Mapping** function is used to map the ResultSet to a JsonElement or to a CustomClass. It accept as parameter a Function or a BiFunction.
 
+**Destroy** function is used to close all resources opened such as ResultSet and PreparedStatement.
 ```java
 public QueryCore destroy()
 ```
-**Destroy** function is used to close all resources opened such as ResultSet and PreparedStatement.
+
 
 
 
