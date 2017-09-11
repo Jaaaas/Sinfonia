@@ -216,5 +216,6 @@ public QueryCore destroy()
 ### Future developments
 
 * **Maven integration**
-* **New Validators**
+* **New validators**
+* **New mapping operation**
 * **Improves performance**
