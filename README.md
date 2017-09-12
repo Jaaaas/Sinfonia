@@ -174,6 +174,7 @@ There are some **"shortcuts"** to decrease the length of the chain.
 JsonArray jsonArray = (JsonArray) queryCore
                         .setup("SELECT * FROM tableName", Arrays.asList(args), connectionCore.fetchConnection(false))
                         .buildQuery()
+                        .executionQ(new Validator().notEmpty)
                         .mapping( new DatabaseUtility().rsToJson)
                         .release();
 ```
