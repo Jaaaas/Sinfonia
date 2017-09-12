@@ -25,7 +25,7 @@ you can download it from here [Sinfonia](https://github.com/Jaaaas/Sinfonia/file
 We will divide the functionality for the two main entities described above.
 
 ### ConnectionCore
-ConnectionCore allows you to establish the first connection to the database. It is to do it through a json file where we will find the configuration parameters.
+ConnectionCore allows you to establish the first connection to the database. It can be done through a json file where we will find the configuration parameters.
 
 ```java
 ConnectionCore cc = new ConnectionCore().openConnectionToDB("AbsolutePath/To/ConfigDatabase.json");
