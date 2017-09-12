@@ -222,6 +222,7 @@ public QueryCore destroy()
 ```
 ### Related project
 * **[Cosmo](https://github.com/Jaaaas/Cosmo)**
+* **[Dinamo](https://github.com/Tignaman/Dinamo)**
 
 ### Contributors
 * **[suxl89](https://github.com/suxl89)**
