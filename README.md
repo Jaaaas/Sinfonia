@@ -221,6 +221,11 @@ public QueryCore destroy()
 ### Related project
 * **[Cosmo](https://github.com/Jaaaas/Cosmo)**
 
+### Contributors
+* **[suxl89](https://github.com/suxl89)**
+* **[Nazzareno Di Pietro](https://github.com/Tignaman)**
+* **[fpafumi](https://github.com/fpafumi)**
+
 ### Future developments
 
 * **Testing**
