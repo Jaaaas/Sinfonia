@@ -168,7 +168,7 @@ in this case, an exception will be thrown without any error.
 
 ### Shortcuts
 
-We can use some **"shortcuts"** to decrease the length of the chain. 
+There are some **"shortcuts"** to decrease the length of the chain. 
 
 ```java
 JsonArray jsonArray = (JsonArray) queryCore
