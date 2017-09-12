@@ -218,6 +218,8 @@ public QueryCore mapping()
 ```java
 public QueryCore destroy()
 ```
+### Related project
+* **[Cosmo](https://github.com/Jaaaas/Cosmo)**
 
 ### Future developments
 
