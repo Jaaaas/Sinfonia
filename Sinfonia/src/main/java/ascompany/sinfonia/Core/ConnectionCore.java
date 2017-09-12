@@ -74,6 +74,12 @@ public class ConnectionCore
     {
         return c;
     }
+
+    public void setC(Connection c) 
+    {
+        this.c = c;
+    }
+    
     
     /**
      * Funzione che chiude la connessione 
