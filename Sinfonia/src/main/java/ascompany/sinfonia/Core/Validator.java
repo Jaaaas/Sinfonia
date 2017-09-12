@@ -1,7 +1,7 @@
 package ascompany.sinfonia.Core;
 
-import ascompany.FunctionalInterface.ThrowingBiconsumer;
-import ascompany.FunctionalInterface.ThrowingConsumer;
+import ascompany.sinfonia.FunctionalInterface.ThrowingBiconsumer;
+import ascompany.sinfonia.FunctionalInterface.ThrowingConsumer;
 import java.sql.ResultSet;
 
 /**
