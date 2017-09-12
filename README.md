@@ -44,6 +44,12 @@ A possible json file might be:
 
 ConnectionCore will read these parameters and establish the connection with the specified database. All json file parameters are mandatory except for the database name. *Remember that the project must have the specified driver installed.*
 
+If you have already a Connection object, you can set it up using setConnection method
+
+```java
+public void setC(Connection c) 
+```
+
 When you will retrieve the connection, you can set the auto commit by passing a boolean.
 
 ```java
