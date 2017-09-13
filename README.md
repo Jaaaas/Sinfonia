@@ -149,7 +149,7 @@ Validators can be used as follows
 ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionCore.fetchConnection(false))
                                                 .buildQuery()
                                                 .executionQ(new Validator().notEmptyWithError, "Empty result set"))
-                                                .to(Post.class)
+                                                .to(CustomObject.class)
                                                 .mapping(new DatabaseUtility().rsToModel)
                                                 .destroy()
                                                 .getResponse();
@@ -160,7 +160,7 @@ if the ResultSet will be empty, an exception will be thrown with the specified m
 ArrayList<CustomObject> l = (ArrayList<CustomObject>) queryCore.init(connectionCore.fetchConnection(false))
                                                 .buildQuery()
                                                 .executionQ(new Validator().notEmpty)
-                                                .to(Post.class)
+                                                .to(CustomObject.class)
                                                 .mapping(new DatabaseUtility().rsToModel)
                                                 .destroy()
                                                 .getResponse();
