@@ -1,6 +1,6 @@
 # Sinfonia
 
-> **Java library that helps the query execution process using Java 8. Perform easily queries and updates to any databases.**
+> **Work-in-progress Java library that helps the query execution process using Java 8. Perform easily queries and updates to any databases.**
 
 ## Overview
 
