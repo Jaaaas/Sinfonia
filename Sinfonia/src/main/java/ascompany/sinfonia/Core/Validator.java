@@ -22,6 +22,10 @@ public class Validator
             {
                 throw new Exception();
             }
+            else
+            {
+                rs.previous();
+            }
         }
         else
         {
@@ -40,6 +44,10 @@ public class Validator
             if(!rs.next())
             {
                 throw new Exception((String) y);
+            }
+            else
+            {
+                rs.previous();
             }
         }
         else
