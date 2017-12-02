@@ -19,7 +19,7 @@ Sinfonia uses two main entities:
 
 ### Prerequisites
 In order to use Sinfonia you simply need to import the **JAR** (
-you can download it from here [Sinfonia](https://github.com/Jaaaas/Sinfonia/files/1296058/Sinfonia-1.0.zip) or from the releases) into the project and you can use its features.
+you can download it from here [Sinfonia](https://github.com/Jaaaas/Sinfonia/releases/tag/v1.0.1) or from the releases) into the project and you can use its features.
 
 ### Features
 We will divide the functionality for the two main entities described above.
