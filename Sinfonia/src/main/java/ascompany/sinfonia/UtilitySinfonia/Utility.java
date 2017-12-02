@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ascompany.sinfonia.UtilitySinfonia;
 
+import ascompany.sinfonia.Configurazione.ConfigName;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.BufferedReader;
@@ -38,5 +34,30 @@ public class Utility
             ex.printStackTrace();
             return null;
         }
+    }
+    
+    public static boolean validateConfigJson(JsonObject DBConfigFile) throws Exception
+    {
+        if(!DBConfigFile.has(ConfigName.DRIVER))
+        {
+            throw new Exception("Propety " + ConfigName.DRIVER + " missing");
+        }
+        if(!DBConfigFile.has(ConfigName.IP))
+        {
+            throw new Exception("Propety " + ConfigName.IP + " missing");
+        }
+        if(!DBConfigFile.has(ConfigName.PORT))
+        {
+            throw new Exception("Propety " + ConfigName.PORT + " missing");
+        }
+        if(!DBConfigFile.has(ConfigName.USERNAME))
+        {
+            throw new Exception("Propety " + ConfigName.USERNAME + " missing");
+        }
+        if(!DBConfigFile.has(ConfigName.PASSWORD))
+        {
+            throw new Exception("Propety " + ConfigName.PASSWORD + " missing");
+        }
+        return true;
     }
 }

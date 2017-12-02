@@ -1,7 +1,7 @@
 package ascompany.sinfonia.Core;
 
-import FunctionalInterface.ThrowingBiconsumer;
-import FunctionalInterface.ThrowingConsumer;
+import ascompany.sinfonia.FunctionalInterface.ThrowingBiconsumer;
+import ascompany.sinfonia.FunctionalInterface.ThrowingConsumer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -29,7 +28,7 @@ public class QueryCore<T,K,V>
     /**
      * Lista dei parametri che vengono utilizzati per rimpizziare i "?" (Ricordare di passarli in ordine) 
      */
-    private List<Object> l;
+    private List<Object> l = null;
     
     /**
      * Prepared statement utilizzato per effettuare la query 

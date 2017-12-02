@@ -1,6 +1,7 @@
 package ascompany.sinfonia.Core;
 
 import ascompany.sinfonia.Configurazione.ConfigName;
+import ascompany.sinfonia.UtilitySinfonia.Utility;
 import static ascompany.sinfonia.UtilitySinfonia.Utility.convertFileToJson;
 import com.google.gson.JsonObject;
 import java.sql.Connection;
@@ -21,6 +22,9 @@ public class ConnectionCore
     public ConnectionCore openConnectionToDB(String pathDbConfig) throws Exception
     {
         JsonObject DBConfigFile = convertFileToJson(pathDbConfig);
+        
+        Utility.validateConfigJson(DBConfigFile);
+        
         Class.forName(DBConfigFile.get(ConfigName.DRIVER).getAsString());
         c = DriverManager.getConnection
         (
@@ -70,6 +74,12 @@ public class ConnectionCore
     {
         return c;
     }
+
+    public void setC(Connection c) 
+    {
+        this.c = c;
+    }
+    
     
     /**
      * Funzione che chiude la connessione 
