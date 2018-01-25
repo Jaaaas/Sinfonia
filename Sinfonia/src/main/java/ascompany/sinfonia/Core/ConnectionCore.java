@@ -45,8 +45,11 @@ public class ConnectionCore
         c = DriverManager.getConnection
         (
             (
-                DBConfigFile.get(ConfigName.IP).getAsString() + ":" + 
-                DBConfigFile.get(ConfigName.PORT).getAsString() + ConfigName.PREFIX_TIMEZONE + DBConfigFile.get(ConfigName.TIMEZONE).getAsString()
+                DBConfigFile.get(ConfigName.IP).getAsString() + 
+                // ":" + 
+                DBConfigFile.get(ConfigName.PORT).getAsString() + 
+                //ConfigName.PREFIX_TIMEZONE + 
+                DBConfigFile.get(ConfigName.TIMEZONE).getAsString()
             ),    
             DBConfigFile.get(ConfigName.USERNAME).getAsString(),
             DBConfigFile.get(ConfigName.PASSWORD).getAsString()
