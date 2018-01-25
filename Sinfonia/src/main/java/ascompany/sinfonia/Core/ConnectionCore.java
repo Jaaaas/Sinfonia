@@ -34,7 +34,7 @@ public class ConnectionCore
                 DBConfigFile.get(ConfigName.PORT).getAsString() +
                 // "/"+ 
                 DBConfigFile.get(ConfigName.DATABASE).getAsString() + 
-                ConfigName.PREFIX_TIMEZONE + 
+                //ConfigName.PREFIX_TIMEZONE + 
                 DBConfigFile.get(ConfigName.TIMEZONE).getAsString()
             ),    
             DBConfigFile.get(ConfigName.USERNAME).getAsString(),
@@ -54,6 +54,7 @@ public class ConnectionCore
                 // ":" + 
                 DBConfigFile.get(ConfigName.PORT).getAsString() + 
                 //ConfigName.PREFIX_TIMEZONE + 
+                DBConfigFile.get(ConfigName.DATABASE).getAsString() + 
                 DBConfigFile.get(ConfigName.TIMEZONE).getAsString()
             ),    
             DBConfigFile.get(ConfigName.USERNAME).getAsString(),
